@@ -1,13 +1,16 @@
 const express = require('express')
 const path = require('path')
+const hbs = require('hbs')
 
 const app = express()
 
 // console.log(path.join(__dirname,'../Public'))
 
-const publicDirectry = path.join(__dirname,'../Public/views')
-console.log(publicDirectry)
+const publicDirectry = path.join(__dirname)
+const views = path.join(__dirname,'../views')
+console.log(views)
 app.set('view engine','hbs')
+app.set('views', views)
 
 app.use(express.static(publicDirectry))
 
@@ -19,6 +22,8 @@ app.get('',(req, res) => {
             age: '27'
     })
 })
+
+
 
 app.get('/about',(req, res) => {
     res.render('about',{
